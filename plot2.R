@@ -19,6 +19,8 @@ data$Sub_metering_2 <- as.numeric(data$Sub_metering_2)
 data$Sub_metering_3 <- as.numeric(data$Sub_metering_3)
 
 #Exporting the plot to a file
-png(filename="plot1.png",width=480,height=480,units="px")
-hist(data$Global_active_power/500, col="red",main="Global Active Power",xlab="Global Active Power (kilowatts)")
+png(filename="plot2.png",width=480,height=480,units="px")
+with(data,plot(Time,Global_active_power/500,type="l",xlab="",ylab="Global Active Power (kilowatts)"))
 dev.off()
+
+
