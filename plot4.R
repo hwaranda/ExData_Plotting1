@@ -19,6 +19,20 @@ data$Sub_metering_2 <- as.numeric(as.character(data$Sub_metering_2))
 data$Sub_metering_3 <- as.numeric(as.character(data$Sub_metering_3))
 
 #Exporting the plot to a file
-png(filename="plot1.png",width=480,height=480,units="px")
-hist(data$Global_active_power, col="red",main="Global Active Power",xlab="Global Active Power (kilowatts)")
+
+png(filename="plot4.png",width=480,height=480,units="px")
+
+par(mfcol=c(2,2),mar = c(4, 4, 2, 2), oma = c(0, 0, 0, 0))
+#Plot A
+with(data,plot(Time,Global_active_power,type="l",xlab="",ylab="Global Active Power"))
+#Plot B
+with(data,plot(Time,Sub_metering_1,type="l",xlab="",ylab="Energy sub metering"))
+with(data,lines(Time,Sub_metering_2,type="l",col="red"))
+with(data,lines(Time,Sub_metering_3,type="l",col="blue"))
+legend("topright", lty = 1, bty="n", col = c("black","red", "blue"), legend = c("Sub_metering_1", "Sub_metering_2", "Sub_metering_3"))
+#Plot C
+with(data,plot(Time,Voltage,type="l",xlab="datetime",ylab="Voltage"))
+#Plot D
+with(data,plot(Time,Global_reactive_power,type="l",xlab="datetime",ylab="Global_reactive_power"))
+
 dev.off()
